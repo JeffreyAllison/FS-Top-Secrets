@@ -34,7 +34,7 @@ describe('backend-express-template routes', () => {
   });
 
   it('new user created upon sign up', async () => {
-    const res = await (await request(app).post('/api/v1/users')).send(dodUser);
+    const res = await request(app).post('/api/v1/users').send(dodUser);
     const { firstName, lastName, email } = dodUser;
 
     expect(res.body).toEqual({
