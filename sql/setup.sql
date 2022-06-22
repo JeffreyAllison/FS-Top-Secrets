@@ -15,8 +15,8 @@ CREATE TABLE dod_users (
 
 CREATE TABLE secrets (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  title TEXT REQUIRED,
-  description TEXT REQUIRED,
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
   created_at TIMESTAMP
 );
 
