@@ -45,6 +45,17 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('logs in a created user', async () => {
+    const [agent, user] = await signUpAndLogin();
+    const currentUser = await agent.get('/api/v1/users/currentUser');
+
+    expect(currentUser.body).toEqual({
+      ...user,
+      exp: expect.any(Number),
+      iat: expect.any(Number),
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
