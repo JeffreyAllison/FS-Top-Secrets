@@ -19,9 +19,7 @@ const signUpAndLogin = async (userProps = {}) => {
   const user = await UserService.create({ ...dodUser, ...userProps });
 
   const { email } = user;
-  await (
-    await agent.post('/api/v1/users/sessions')
-  ).setEncoding({
+  await agent.post('/api/v1/users/sessions').send({
     email,
     password,
   });
@@ -47,9 +45,9 @@ describe('backend-express-template routes', () => {
 
   it('logs in a created user', async () => {
     const [agent, user] = await signUpAndLogin();
-    const currentUser = await agent.get('/api/v1/users/currentUser');
+    const me = await agent.get('/api/v1/users/me');
 
-    expect(currentUser.body).toEqual({
+    expect(me.body).toEqual({
       ...user,
       exp: expect.any(Number),
       iat: expect.any(Number),
