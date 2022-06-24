@@ -54,6 +54,24 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('should be able to logout', async () => {
+    const [agent, user] = await signUpAndLogin();
+    const me = await agent.get('/api/v1/users/me');
+
+    expect(me.body).toEqual({
+      ...user,
+      exp: expect.any(Number),
+      iat: expect.any(Number),
+    });
+
+    const resp = await request(app).delete('/api/v1/users/sessions');
+    expect(resp.body.message).toEqual('Signed out!');
+    expect(resp.status).toEqual(200);
+
+    const dashboardRequest = await request.agent(app).get('/api/v1/users/me');
+    expect(dashboardRequest.body.message).toEqual('Sign In to Continue');
+  });
+
   afterAll(() => {
     pool.end();
   });
