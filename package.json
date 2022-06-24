@@ -1,7 +1,7 @@
 {
   "name": "backend-express-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "The Golden Rule: 🦸 🦸‍♂️ Stop starting and start finishing. 🏁",
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
@@ -32,9 +32,23 @@
     "supertest": "^6.2.3"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeffreyAllison/FS-Top-Secrets.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JeffreyAllison/FS-Top-Secrets/issues"
+  },
+  "homepage": "https://github.com/JeffreyAllison/FS-Top-Secrets#readme"
 }
