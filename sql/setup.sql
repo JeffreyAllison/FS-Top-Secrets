@@ -20,4 +20,8 @@ CREATE TABLE secrets (
   created_at TIMESTAMP
 );
 
+INSERT INTO secrets (title, description, created_at)
+VALUES
+('Big Secret', 'Theres aliens yall', CURRENT_TIMESTAMP)
+
 
